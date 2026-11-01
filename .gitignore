@@ -4,3 +4,7 @@ node_modules/
 .env.*
 private/
 sandbox/
+
+# Browsing app
+/app/dist/
+/app/src/.observablehq/cache/

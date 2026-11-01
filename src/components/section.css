@@ -6,7 +6,7 @@
   padding: 2rem;
 }
 
-/* Process phase sections (app/src/components/process.js) use the --color-phase-* tokens. */
+/* Process phase sections (portfolio-web/src/components/process.js) use the --color-phase-* tokens. */
 .section-explore { --section-color: var(--color-phase-explore); }
 .section-define { --section-color: var(--color-phase-define); }
 .section-design { --section-color: var(--color-phase-design); }

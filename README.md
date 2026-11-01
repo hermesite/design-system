@@ -9,7 +9,8 @@ Bootstrap 6 needs Chrome/Edge 130, Firefox 132 or Safari 18 (it uses `light-dark
 ```
 design-system/
 ├── index.css                 Entry point (imports everything, in order)
-├── package.json              Declares the bootstrap dependency
+├── package.json              Declares the bootstrap dependency and the version
+├── app/                      Web app to browse tokens, breakpoints and components
 └── src/
     ├── fonts.css             Google Fonts import (Kreon, Big Shoulders, Roboto Condensed)
     ├── bootstrap.css         Imports Bootstrap's CSS from node_modules
@@ -28,23 +29,35 @@ Bootstrap 6 ships its component CSS in `@layer`s (`colors, config, root, reboot,
 
 In the pinned Bootstrap alpha, the root custom-property declarations are unlayered, so a layered `variables.css` would never override them. `index.css` therefore imports `variables.css` **unlayered**, after Bootstrap: same selector (`:root, :host`), later in the cascade, so the `--bs-*` mappings win. Only custom properties live in that file, so nothing else is promoted above Bootstrap's helpers and utilities.
 
-## Examples
+## Browse the design system
 
-The Observable app hosts a small set of living examples: an [overview](../app/src/design-system/index.md), [tokens and layout](../app/src/design-system/tokens.md), and [components](../app/src/design-system/components.md). They use this stylesheet and the app's existing JavaScript; they are not part of the standalone CSS package.
+`app/` is a small [Observable Framework](https://observablehq.com/framework/) app to browse, navigate and explore the design system. It loads `index.css`, so it shows the default tokens, fonts and components exactly as a project would get them. It is not part of the CSS package: `app/` has its own `package.json`, so projects that only use the CSS do not install its dependencies.
 
-To run them locally, install the dependencies for both projects and start the app:
+| Page | Contents |
+| --- | --- |
+| `/` | Overview, load order and current versions |
+| `/tokens` | Colors, typography, spacing and shape, read live from the loaded CSS |
+| `/breakpoints` | Breakpoint files, current breakpoint, responsive grid and visibility |
+| `/bootstrap` | Bootstrap components restyled by the tokens: buttons, badges, forms, alerts, cards, list group, breadcrumb, tables, dialog |
+| `/components` | Custom components: section, process phase, stack, gallery and workspace |
+
+The header and footer show the design system version, read from `package.json` (`version`), and the installed Bootstrap version.
 
 ```sh
 cd design-system
 npm install
-cd ../app
+cd app
 npm install
 npm run dev
 ```
 
-Open <http://localhost:3000/design-system/>. Token values are read from the loaded CSS; refresh the page after changing them.
+Open <http://localhost:3000/>. Token values are read from the loaded CSS; refresh the page after changing them. `npm run build` writes a static site to `app/dist/`.
 
-The example pages enable Observable's table of contents with `toc: true` in their frontmatter. The app's existing shell displays it from 1024px upwards and uses Bootstrap ScrollSpy to highlight the section being read; it remains hidden in embedded workspace pages.
+The pages enable Observable's table of contents with `toc: true` in their frontmatter. `app/src/shell.js` displays it from 1024px upwards and uses Bootstrap ScrollSpy to highlight the section being read; it is hidden in embedded pages (the workspace example).
+
+To document a new component in the app, add a section to `app/src/components.md` with a live example and its markup. To version the design system, bump `version` in `package.json`.
+
+The portfolio ([`portfolio-web`](https://github.com/hermesite/portfolio-web)) keeps its own examples of the design system in use, under `/design-system/`.
 
 ## Install in a new project
 
@@ -64,12 +77,12 @@ If the host project already installs Bootstrap, remove `bootstrap` from `design-
 
 ### Observable Framework (this repo)
 
-`app/src/style.css` does not load Observable's default styles or theme. It keeps only the renderers for code output (inspector, plots, syntax highlighting) in a lowest-priority `observable` layer, lays out Observable's page shell (`#observablehq-*`) as a centered grid, then imports the design system. `app/observablehq.config.js` points to it with `style: "style.css"`.
+`portfolio-web/src/style.css` does not load Observable's default styles or theme. It keeps only the renderers for code output (inspector, plots, syntax highlighting) in a lowest-priority `observable` layer, lays out Observable's page shell (`#observablehq-*`) as a centered grid, then imports the design system. `portfolio-web/observablehq.config.js` points to it with `style: "style.css"`.
 
 - The sidebar is off (`sidebar: false`). The navbar in the header is built from `pages` in the config: sections are Bootstrap menus and the toggler opens a drawer on small screens.
-- `app/src/shell.js` (loaded from `head`) imports Bootstrap's JS bundle, marks the current page in the navbar and runs Bootstrap's ScrollSpy on the table of contents (frontmatter `toc: true`).
+- `portfolio-web/src/shell.js` (loaded from `head`) imports Bootstrap's JS bundle, marks the current page in the navbar and runs Bootstrap's ScrollSpy on the table of contents (frontmatter `toc: true`).
 - `style` replaces `theme`, so a page that sets `theme:` in its frontmatter drops `style.css`. Remove `theme:` from pages that should use the design system.
-- The Observable theme is light only, so `app/src/style.css` sets `color-scheme: light` (Bootstrap 6 follows the system color mode by default).
+- The Observable theme is light only, so `portfolio-web/src/style.css` sets `color-scheme: light` (Bootstrap 6 follows the system color mode by default).
 - Observable's `.card`, `.grid` and `.note` classes are no longer styled; use Bootstrap's `.card` and `.row`/`.md:col-*`.
 
 ## Customise
@@ -131,25 +144,25 @@ A padded block for grouping page content. Add a utility such as `border` when a 
 <div class="section">...</div>
 ```
 
-Process phase sections (generated by `app/src/components/process.js`) add a `.section-explore`, `.section-define`, `.section-design`, `.section-integrate` or `.section-deliver` modifier. It sets `--section-color` from the matching `--color-phase-*` token, used as the solid background with white text. Hooks: `.section-activities` and `.section-activity` (mini cards, accented with `--section-color`) and `.section-stack` (white panel for the tool icons).
+Process phase sections (generated by `portfolio-web/src/components/process.js`) add a `.section-explore`, `.section-define`, `.section-design`, `.section-integrate` or `.section-deliver` modifier. It sets `--section-color` from the matching `--color-phase-*` token, used as the solid background with white text. Hooks: `.section-activities` and `.section-activity` (mini cards, accented with `--section-color`) and `.section-stack` (white panel for the tool icons).
 
 ### Gallery
 
-Image slider with thumbnails, swipe, keyboard navigation and a stacked list on small screens. Markup is generated by `app/src/components/gallery.js`.
+Image slider with thumbnails, swipe, keyboard navigation and a stacked list on small screens. Markup is generated by `portfolio-web/src/components/gallery.js`.
 
 Hooks: `.gallery`, `.gallery-nav`, `.gallery-thumbs`, `.gallery-thumb`, `.gallery-viewport`, `.gallery-track`, `.gallery-slide`, `.gallery-frame`, `.gallery-caption`, `.gallery-btn`, `.gallery-list`.
 `aria-current="true"` marks the active slide/thumbnail; `data-ready` on `.gallery-track` enables the slide transition. Height is set with `--gallery-height`.
 
 ### Stack
 
-List of tools (technologies, libraries and software), disciplines and social links with icons or color dots. Markup is generated by `app/src/components/stack.js`; items come from the `tools`, `disciplines`, `process` and `social` categories of `app/src/components/catalog.js`.
+List of tools (technologies, libraries and software), disciplines and social links with icons or color dots. Markup is generated by `portfolio-web/src/components/stack.js`; items come from the `tools`, `disciplines`, `process` and `social` categories of `portfolio-web/src/components/catalog.js`.
 
 Hooks: `.stack`, `.stack-group`, `.stack-list`, `.stack-item`, `.stack-item-icon`, `.stack-item-filled`, `.stack-icon`, `.stack-dot`.
 Per-item colors are passed with `--stack-color` and `--stack-ink` (inline style).
 
 ### Workspace
 
-Three-panel layout: about, menu and stage. Stacked on small screens (about and stage fill the screen height, the menu takes 40% of it); three full-height columns that scroll on their own from `lg` up (`breakpoints/lg.css`). Markup and behavior come from `app/src/components/workspace.js`: the menu lists every page in `app/src/components/pages.js`, grouped and always expanded, and its links load into the stage iframe.
+Three-panel layout: about, menu and stage. Stacked on small screens (about and stage fill the screen height, the menu takes 40% of it); three full-height columns that scroll on their own from `lg` up (`breakpoints/lg.css`). Markup and behavior come from `portfolio-web/src/components/workspace.js`: the menu lists every page in `portfolio-web/src/components/pages.js`, grouped and always expanded, and its links load into the stage iframe.
 
 ```html
 <div class="workspace">
@@ -159,7 +172,7 @@ Three-panel layout: about, menu and stage. Stacked on small screens (about and s
 </div>
 ```
 
-In this project the home page (`index.md`) is the workspace and the stage shows `sections/process.md` until a menu item replaces it. Pages loaded in the stage hide the navbar, footer and table of contents (`app/src/style.css`).
+In this project the home page (`index.md`) is the workspace and the stage shows `sections/process.md` until a menu item replaces it. Pages loaded in the stage hide the navbar, footer and table of contents (`portfolio-web/src/style.css`).
 
 ### Process phase
 
