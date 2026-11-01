@@ -1,0 +1,20 @@
+:root {
+  --color-primary: #020202;
+  --color-secondary: #6c757d;
+  --color-success: #198754;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #0dcaf0;
+
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+  --color-background: #fff;
+  --color-surface: #f8f9fa;
+  --color-border: #dee2e6;
+
+  --color-phase-explore: #4f79a7;
+  --color-phase-define: #6b7d91;
+  --color-phase-design: #59a14f;
+  --color-phase-integrate: #8c564b;
+  --color-phase-deliver: #76b7b2;
+}

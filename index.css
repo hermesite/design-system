@@ -1,0 +1,29 @@
+/* Single entry point. Order matters: each layer overrides the previous one.
+   Bootstrap 6 ships in CSS layers; everything below Bootstrap joins its `custom` layer
+   so it beats Bootstrap's components but stays below its helpers and utilities. */
+
+/* 0. Web fonts (must come first) */
+@import "./src/fonts.css";
+
+/* 1. Bootstrap base */
+@import "./src/bootstrap.css";
+
+/* 2. Design tokens (raw values) */
+@import "./src/tokens/index.css" layer(custom);
+
+/* 3. Bootstrap token overrides (maps design tokens to --bs-*).
+   Unlayered on purpose: Bootstrap declares its root tokens unlayered, and unlayered rules
+   beat layered ones, so a layered import would never win. Same specificity + later = wins. */
+@import "./src/variables.css";
+
+/* 4. Bootstrap component overrides */
+@import "./src/overrides/index.css" layer(custom);
+
+/* 5. New components not in Bootstrap */
+@import "./src/components/index.css" layer(custom);
+
+/* 6. Utilities */
+@import "./src/utilities/index.css" layer(custom);
+
+/* 7. Breakpoints, mobile-first: base first, then ascending min-width */
+@import "./src/breakpoints/index.css" layer(custom);

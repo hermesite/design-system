@@ -1,0 +1,14 @@
+{
+  "name": "design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal design system built on top of Bootstrap",
+  "style": "index.css",
+  "files": [
+    "index.css",
+    "src"
+  ],
+  "dependencies": {
+    "bootstrap": "6.0.0-alpha.1"
+  }
+}

@@ -1,0 +1,4 @@
+/* Custom utilities that Bootstrap does not provide. */
+.text-balance {
+  text-wrap: balance;
+}

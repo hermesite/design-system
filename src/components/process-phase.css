@@ -1,0 +1,32 @@
+/* Colored phase block with an optional banner image (md breakpoint and up). Set the color with a --phase-* modifier. */
+.process-phase {
+  --phase-color: var(--bs-primary-base);
+  position: relative;
+  padding: 1rem;
+  background-color: var(--phase-color);
+  color: var(--bs-white);
+}
+
+.process-phase-explore { --phase-color: var(--color-phase-explore); }
+.process-phase-define { --phase-color: var(--color-phase-define); }
+.process-phase-design { --phase-color: var(--color-phase-design); }
+.process-phase-integrate { --phase-color: var(--color-phase-integrate); }
+.process-phase-deliver { --phase-color: var(--color-phase-deliver); }
+
+.process-phase-banner {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16rem;
+  height: 100%;
+  object-fit: contain;
+  object-position: top right;
+}
+
+.process-phase-outcomes {
+  padding: 0.5rem 1rem;
+  background: var(--bs-white);
+  color: var(--bs-fg-body);
+  border-left: 4px solid var(--phase-color);
+}

@@ -1,0 +1,71 @@
+/* Three-panel workspace (about | menu | stage). Stacked on small screens, columns from lg up (see breakpoints/lg.css). */
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.workspace-pane {
+  min-width: 0;
+  min-height: 0;
+}
+
+.workspace-about {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+}
+
+
+.workspace-about-footer p {
+  margin: 0;
+  opacity: 0.75;
+}
+
+.workspace-about-footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.workspace-menu {
+  height: 40dvh;
+  overflow-y: auto;
+  border-block: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+.workspace-menu-list {
+  padding-bottom: 1rem;
+}
+
+.workspace-stage {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+/* Observable wraps the displayed content in a `.observablehq` div; keep the flex chain through it. */
+.workspace-stage .observablehq {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.workspace-stage-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.workspace-stage-bar {
+  flex: none;
+  border-block-end: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+.workspace-stage-frame {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border: 0;
+}

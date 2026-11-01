@@ -1,0 +1,29 @@
+/* Stack list (components/stack.js). Layout utilities come from Bootstrap classes in the markup. */
+.stack-item {
+  /* font-size: 0.9rem; */
+}
+
+.stack-icon {
+  color: var(--stack-color, currentColor);
+}
+
+.stack-icon svg {
+  width: 0.8em;
+  height: 0.8em;
+}
+
+.stack-item-filled {
+  background: var(--stack-color);
+  color: var(--stack-ink, var(--bs-white));
+}
+
+.stack-item-icon .stack-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.stack-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--stack-color, currentColor);
+}

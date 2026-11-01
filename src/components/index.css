@@ -1,0 +1,6 @@
+/* New components outside Bootstrap: one file per component, imported here. */
+@import "./section.css";
+@import "./process-phase.css";
+@import "./gallery.css";
+@import "./stack.css";
+@import "./workspace.css";

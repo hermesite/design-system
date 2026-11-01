@@ -1,0 +1,44 @@
+.section header{
+  padding: 2rem;
+}
+
+.process-card-body {
+  padding: 2rem;
+}
+
+/* Process phase sections (app/src/components/process.js) use the --color-phase-* tokens. */
+.section-explore { --section-color: var(--color-phase-explore); }
+.section-define { --section-color: var(--color-phase-define); }
+.section-design { --section-color: var(--color-phase-design); }
+.section-integrate { --section-color: var(--color-phase-integrate); }
+.section-deliver { --section-color: var(--color-phase-deliver); }
+
+.section-explore,
+.section-define,
+.section-design,
+.section-integrate,
+.section-deliver {
+  background-color: var(--section-color);
+  color: var(--bs-white);
+}
+
+.section-activities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.section-activity {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.1);
+}
+
+.section-stack {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  background: var(--bs-white);
+}

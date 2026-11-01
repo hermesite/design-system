@@ -1,0 +1,25 @@
+/* Headings read --bs-heading-font-family (see variables.css); these titles do not. */
+.navbar-brand,
+.card-title,
+.dialog-title,
+.drawer-title {
+  font-family: var(--bs-heading-font-family);
+}
+
+/* Minor headings use the condensed face. */
+h3,
+h4,
+h5,
+h6,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-family-condensed);
+  font-weight: 600; /* Example: make minor headings bold */
+}
+
+/* Keep paragraphs at a readable line length. */
+p {
+  max-width: 720px;
+}

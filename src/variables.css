@@ -1,0 +1,101 @@
+/* Rewrites Bootstrap 6 theme and layer tokens using the design tokens.
+   Declared on :host too so shadow roots see the overrides.
+   index.css imports this file unlayered so it beats Bootstrap's unlayered root tokens. */
+:root,
+:host {
+  /* Theme color: primary (button, badge, alert... read these through .theme-primary) */
+  --bs-primary-base: var(--color-primary);
+  --bs-primary-bg: var(--color-primary);
+  --bs-primary-fg: color-mix(in oklch, var(--color-primary) 84%, black);
+  --bs-primary-fg-emphasis: color-mix(in oklch, var(--color-primary) 52%, black);
+  --bs-primary-bg-subtle: color-mix(in oklch, var(--color-primary) 10%, white);
+  --bs-primary-bg-muted: color-mix(in oklch, var(--color-primary) 20%, white);
+  --bs-primary-border: color-mix(in oklch, var(--color-primary) 40%, white);
+  --bs-primary-focus-ring: color-mix(in oklch, var(--color-primary) 50%, transparent);
+  --bs-primary-contrast: var(--bs-white);
+
+  /* Theme color: secondary */
+  --bs-secondary-base: var(--color-secondary);
+  --bs-secondary-bg: var(--color-secondary);
+  --bs-secondary-fg: color-mix(in oklch, var(--color-secondary) 84%, black);
+  --bs-secondary-fg-emphasis: color-mix(in oklch, var(--color-secondary) 52%, black);
+  --bs-secondary-bg-subtle: color-mix(in oklch, var(--color-secondary) 10%, white);
+  --bs-secondary-bg-muted: color-mix(in oklch, var(--color-secondary) 20%, white);
+  --bs-secondary-border: color-mix(in oklch, var(--color-secondary) 40%, white);
+  --bs-secondary-focus-ring: color-mix(in oklch, var(--color-secondary) 50%, transparent);
+  --bs-secondary-contrast: var(--bs-white);
+
+  /* Theme color: success */
+  --bs-success-base: var(--color-success);
+  --bs-success-bg: var(--color-success);
+  --bs-success-fg: color-mix(in oklch, var(--color-success) 84%, black);
+  --bs-success-fg-emphasis: color-mix(in oklch, var(--color-success) 52%, black);
+  --bs-success-bg-subtle: color-mix(in oklch, var(--color-success) 10%, white);
+  --bs-success-bg-muted: color-mix(in oklch, var(--color-success) 20%, white);
+  --bs-success-border: color-mix(in oklch, var(--color-success) 40%, white);
+  --bs-success-focus-ring: color-mix(in oklch, var(--color-success) 50%, transparent);
+  --bs-success-contrast: var(--bs-white);
+
+  /* Theme color: danger */
+  --bs-danger-base: var(--color-danger);
+  --bs-danger-bg: var(--color-danger);
+  --bs-danger-fg: color-mix(in oklch, var(--color-danger) 84%, black);
+  --bs-danger-fg-emphasis: color-mix(in oklch, var(--color-danger) 52%, black);
+  --bs-danger-bg-subtle: color-mix(in oklch, var(--color-danger) 10%, white);
+  --bs-danger-bg-muted: color-mix(in oklch, var(--color-danger) 20%, white);
+  --bs-danger-border: color-mix(in oklch, var(--color-danger) 40%, white);
+  --bs-danger-focus-ring: color-mix(in oklch, var(--color-danger) 50%, transparent);
+  --bs-danger-contrast: var(--bs-white);
+
+  /* Theme color: warning */
+  --bs-warning-base: var(--color-warning);
+  --bs-warning-bg: var(--color-warning);
+  --bs-warning-fg: color-mix(in oklch, var(--color-warning) 60%, black);
+  --bs-warning-fg-emphasis: color-mix(in oklch, var(--color-warning) 40%, black);
+  --bs-warning-bg-subtle: color-mix(in oklch, var(--color-warning) 10%, white);
+  --bs-warning-bg-muted: color-mix(in oklch, var(--color-warning) 20%, white);
+  --bs-warning-border: color-mix(in oklch, var(--color-warning) 40%, white);
+  --bs-warning-focus-ring: color-mix(in oklch, var(--color-warning) 50%, transparent);
+  --bs-warning-contrast: var(--color-text);
+
+  /* Theme color: info */
+  --bs-info-base: var(--color-info);
+  --bs-info-bg: var(--color-info);
+  --bs-info-fg: color-mix(in oklch, var(--color-info) 60%, black);
+  --bs-info-fg-emphasis: color-mix(in oklch, var(--color-info) 40%, black);
+  --bs-info-bg-subtle: color-mix(in oklch, var(--color-info) 10%, white);
+  --bs-info-bg-muted: color-mix(in oklch, var(--color-info) 20%, white);
+  --bs-info-border: color-mix(in oklch, var(--color-info) 40%, white);
+  --bs-info-focus-ring: color-mix(in oklch, var(--color-info) 50%, transparent);
+  --bs-info-contrast: var(--color-text);
+
+  /* Layer colors: foreground, background, border */
+  --bs-fg-body: var(--color-text);
+  --bs-fg-1: color-mix(in oklch, var(--color-text) 90%, var(--color-text-muted));
+  --bs-fg-2: color-mix(in oklch, var(--color-text) 60%, var(--color-text-muted));
+  --bs-fg-3: var(--color-text-muted);
+  --bs-fg-4: color-mix(in oklch, var(--color-text-muted) 80%, var(--color-background));
+  --bs-bg-body: var(--color-background);
+  --bs-bg-1: var(--color-surface);
+  --bs-bg-2: color-mix(in oklch, var(--color-surface) 70%, var(--color-border));
+  --bs-bg-3: color-mix(in oklch, var(--color-surface) 40%, var(--color-border));
+  --bs-bg-4: var(--color-border);
+  --bs-border-color: var(--color-border);
+  --bs-border-body: var(--color-border);
+  --bs-border-muted: color-mix(in oklch, var(--color-border) 60%, var(--color-background));
+  --bs-border-subtle: color-mix(in oklch, var(--color-border) 80%, var(--color-background));
+  --bs-border-emphasized: color-mix(in oklch, var(--color-border) 70%, var(--color-text-muted));
+
+  --bs-body-font-family: var(--font-family-sans);
+  --bs-font-mono: var(--font-family-mono);
+  --bs-body-font-size: var(--font-size-base);
+  --bs-body-font-weight: var(--font-weight-normal);
+  --bs-body-line-height: var(--line-height-base);
+
+  --bs-heading-font-family: var(--font-family-heading);
+  --bs-heading-font-weight: var(--font-weight-bold);
+  --bs-heading-line-height: var(--line-height-heading);
+
+  --bs-radius-5: var(--radius-base);
+  --bs-spacer: var(--space-unit);
+}

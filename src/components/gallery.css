@@ -1,0 +1,115 @@
+/* Image gallery (components/gallery.js). Layout utilities come from Bootstrap classes in the markup. */
+.gallery {
+    --gallery-height: min(60vh, 480px);
+    outline: none;
+}
+
+.gallery-btn {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.gallery-thumbs {
+    scrollbar-width: none;
+}
+
+.gallery-thumb {
+    height: 96px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    outline-offset: 2px;
+}
+
+.gallery-thumb img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+.gallery-thumb:hover {
+    opacity: 0.85;
+}
+
+.gallery-thumb[aria-current="true"] {
+    opacity: 1;
+    outline: 2px solid var(--bs-primary-base);
+}
+
+.gallery-viewport {
+    container-type: inline-size;
+    touch-action: pan-y;
+    user-select: none;
+    /* mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent); */
+    border-top: 1px dotted var(--bs-fg-body);
+    border-bottom: 1px dotted var(--bs-fg-body);
+}
+
+.gallery-track {
+    will-change: transform;
+}
+
+.gallery-track[data-ready] {
+    transition: transform 0.35s ease;
+}
+
+.gallery-slide {
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.35s;
+}
+
+.gallery-slide[aria-current="true"] {
+    opacity: 1;
+    cursor: default;
+}
+
+.gallery-frame {
+    height: var(--gallery-height);
+}
+
+.gallery-frame img {
+    display: block;
+    margin: auto;
+    width: auto;
+    height: auto;
+    max-width: 60cqw;
+    max-height: 100%;
+    -webkit-user-drag: none;
+}
+
+.gallery-caption {
+    max-width: none;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--bs-white);
+    border-left: 4px solid var(--bs-primary-base);
+}
+
+.gallery-slide .gallery-caption {
+    position: absolute;
+    top: 50%;
+    bottom: 0%;
+    right: 0%;
+    width: 40%;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.35s;
+}
+
+.gallery-slide[aria-current="true"] .gallery-caption {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-track[data-ready],
+    .gallery-slide,
+    .gallery-slide .gallery-caption,
+    .gallery-thumb {
+        transition: none;
+    }
+}
