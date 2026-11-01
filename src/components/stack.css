@@ -17,6 +17,11 @@
   color: var(--stack-ink, var(--bs-white));
 }
 
+.stack-item-outline {
+  border: 1px solid var(--stack-color);
+  /* color: var(--stack-ink); */
+}
+
 .stack-item-icon .stack-icon svg {
   width: 1.5rem;
   height: 1.5rem;

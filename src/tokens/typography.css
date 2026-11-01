@@ -1,7 +1,7 @@
 :root {
   --font-family-heading: "Kreon", Georgia, "Times New Roman", serif;
   --font-family-condensed: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
-  --font-family-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-family-sans: "Roboto Condensed","Helvetica Neue", Arial, sans-serif;
   --font-family-mono: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   --font-family-viz: "Big Shoulders", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
