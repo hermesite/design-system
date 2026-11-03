@@ -2,6 +2,48 @@
   padding: 2rem;
 }
 
+.process-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.process-card-header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Toggle button - reset defaults and apply consistent styling */
+.process-card-toggle {
+
+}
+
+.process-card-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.process-card-toggle:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.process-card-toggle:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.process-card-header .process-card-toggle-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transform: rotate(-180deg);
+}
+
+.process-card-header[aria-expanded="false"] .process-card-toggle-icon {
+  transform: rotate(0deg);
+}
+
 .process-card-body {
   padding: 2rem;
 }
